@@ -1,0 +1,624 @@
+:root {
+  --primary: #1e3a8a;
+  /* Dark Blue */
+  --secondary: #3b82f6;
+  /* Icy Blue */
+  --bg-color: #f8fafc;
+  /* Very Light Blue/White */
+  --card-bg: #ffffff;
+  --text-color: #1e293b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cinzel Decorative", sans-serif;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.section {
+  padding: 120px 0;
+  position: relative;
+  z-index: 1;
+
+
+  &:last-child::after,
+  &:first-child::before {
+    background-image: url('../pattern-1.webp');
+
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image: url('../pattern-4.webp');
+    z-index: -1;
+  }
+
+  &::after {
+    transform: rotate(180deg);
+  }
+
+  &-shadow {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 10;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 35px;
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.4) 20%,
+          rgba(255, 255, 255, 1) 50%,
+          rgba(255, 255, 255, 0.4) 80%,
+          rgba(255, 255, 255, 0) 100%);
+      filter: blur(5px);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse 40% 45% at 18% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 40%, transparent 70%),
+        radial-gradient(ellipse 45% 50% at 50% 50%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 45%, transparent 75%),
+        radial-gradient(ellipse 40% 45% at 82% 50%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 40%, transparent 70%);
+      filter: blur(12px);
+    }
+  }
+
+  &-wrapper {
+    max-width: 430px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &-body {
+    padding: 0 20px 20px 20px;
+  }
+
+  &-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--primary);
+  }
+
+  &-title {
+    color: var(--secondary);
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  &-midtitle {
+    color: var(--secondary);
+    font-size: 35px;
+    font-weight: 400;
+
+    span {
+      font-size: 40px;
+    }
+  }
+
+  &-image {
+    padding: 6px;
+    border: 1px solid #000000;
+    border-radius: 191px 191px 0 0;
+    position: relative;
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 185px 185px 0 0;
+      display: block;
+    }
+
+    &__pattern {
+      position: absolute;
+      left: 0;
+      top: -20px;
+      width: calc(100% - 60px);
+    }
+  }
+
+  &-cards {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &-card {
+    position: relative;
+    padding-bottom: 10px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('/card-line.svg');
+      background-position: center;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    &__inner {
+      padding: 28px 20px;
+      background: var(--card-bg);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      border-radius: 12px;
+    }
+
+    &__count {
+      color: var(--secondary);
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: 6px;
+    }
+
+    &__label {
+      color: var(--primary);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+
+  &-text {
+    color: var(--primary);
+    text-align: center;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &-main {
+    &__cards {
+      display: flex;
+      gap: 16px;
+      position: relative;
+
+    }
+
+    &__card {
+      border-radius: 12px;
+      background: var(--card-bg);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+
+      &__person {
+        position: relative;
+        width: max-content;
+        z-index: 1;
+        margin-bottom: 20px;
+
+        &__icon {
+          width: 32px;
+          height: 32px;
+        }
+
+        &__inner {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--secondary) 0%, #60a5fa 100%);
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+
+          &--bride {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2563eb 50%, #60a5fa 100%);
+          }
+
+          img {
+            transform: translateY(4px);
+          }
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          inset: -5px;
+          background-color: white;
+          border: 2px solid var(--secondary);
+          z-index: -1;
+          border-radius: 50%;
+        }
+      }
+
+      &__label {
+        color: var(--primary);
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 6px;
+      }
+
+      &__value {
+        color: var(--secondary);
+        font-size: 28px;
+        font-weight: 700;
+      }
+    }
+
+    &__ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 122px;
+    }
+  }
+
+  &-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 16px;
+
+  }
+
+  &-contact {
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 16px;
+
+
+    &__label {
+      color: var(--primary);
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    &__value {
+      color: var(--secondary);
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    &:not(:last-child) {
+      flex: 1;
+    }
+
+    &:last-child {
+      width: 100%;
+    }
+  }
+
+  &-item {
+    border-radius: 12px;
+    background: var(--card-bg);
+    padding: 16px;
+
+    &__label {
+      color: var(--primary);
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    &__value {
+      margin: 6px 0 4px 0;
+      color: var(--secondary);
+      font-size: 28px;
+      font-weight: 700;
+      text-decoration: none;
+      display: block;
+    }
+  }
+
+  &-map {
+    border-radius: 12px;
+    border: 1px solid #D8C7C2;
+    overflow: hidden;
+
+    iframe {
+      display: block;
+      border: none;
+      width: 100%;
+      min-height: 400px;
+    }
+  }
+
+  &-wishes {
+    &__title {
+      color: var(--primary);
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    &__text {
+      color: var(--primary);
+      text-align: center;
+      font-size: 21px;
+      font-weight: 400;
+
+      strong {
+        font-weight: 700;
+      }
+
+      span {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+    }
+  }
+
+}
+
+.mb-1 {
+  margin-bottom: 4px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mb-3 {
+  margin-bottom: 12px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.mb-5 {
+  margin-bottom: 20px;
+}
+
+.mb-6 {
+  margin-bottom: 24px;
+}
+
+.mb-7 {
+  margin-bottom: 28px;
+}
+
+.mb-8 {
+  margin-bottom: 32px;
+}
+
+.mb-9 {
+  margin-bottom: 36px;
+}
+
+.mb-10 {
+  margin-bottom: 40px;
+}
+
+// Decorative Leaves
+.leaf {
+  position: absolute;
+  width: 120px;
+  height: auto;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 3;
+}
+
+// section-hero (2 barg)
+.leaf-1 {
+  top: 10%;
+  left: 5%;
+  transform: rotate(-35deg);
+  width: 70px;
+}
+
+.leaf-2 {
+  bottom: 15%;
+  right: 8%;
+  transform: rotate(55deg);
+  width: 85px;
+}
+
+// section-countdown (2 barg)
+.leaf-3 {
+  top: 20%;
+  right: 5%;
+  transform: rotate(125deg);
+  width: 95px;
+}
+
+.leaf-8 {
+  bottom: 15%;
+  left: 6%;
+  transform: rotate(-45deg);
+  width: 100px;
+}
+
+// section-wedding (2 barg)
+.leaf-4 {
+  top: 12%;
+  left: 3%;
+  transform: rotate(-75deg);
+  width: 75px;
+}
+
+.leaf-5 {
+  bottom: 18%;
+  right: 6%;
+  transform: rotate(20deg);
+  width: 80px;
+}
+
+// section-map (1 barg)
+.leaf-6 {
+  top: 25%;
+  left: 4%;
+  transform: rotate(-95deg);
+  width: 70px;
+}
+
+// section-text (2 barg)
+.leaf-7 {
+  bottom: 20%;
+  right: 5%;
+  transform: rotate(70deg);
+  width: 75px;
+}
+
+.leaf-9 {
+  top: 18%;
+  left: 7%;
+  transform: rotate(-110deg);
+  width: 68px;
+}
+
+.player {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+
+  &-icon {
+    background-color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+
+
+    &.playing::before {
+      opacity: 1;
+    }
+
+    svg {
+      fill: white;
+      transition: transform 0.3s ease;
+    }
+
+    &__play {
+      width: 19px;
+      height: 20px;
+    }
+
+    &__pause {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &-name {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+
+    svg {
+      width: 100%;
+      height: 100%;
+
+      text {
+        fill: var(--secondary);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+// Snowflake Animation
+.snowflake {
+  position: fixed;
+  top: -20px;
+  color: var(--secondary);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(105vh);
+  }
+}
